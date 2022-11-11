@@ -1,24 +1,23 @@
 <div class="container">
-    <form [formGroup]="servicesForm">
-      <div class="card" style="width: 16rem;">
+  <form [formGroup]="servicesForm">
+    <div class="card" style="width: 16rem"></div>
+    <div class="row">
+      <div class="col-lg-25" *ngFor="let service of services">
+        <label class="services"
+          >{{ service.name }}
+          <input
+            type="checkbox"
+            formArrayName="selectServices"
+            [value]="service.name"
+            (change)="controlService($event)"
+          />
+          <span class="checkmark"></span>
+        </label>
       </div>
-      <div class="row">
-        <div class="col-lg-25" *ngFor="let service of services">
-          <label class="services"
-            >{{ service.name }}
-            <input
-              type="checkbox"
-              formArrayName="selectServices"
-              [value]="service.name"
-              (change)="controlService($event)"
-            />
-            <span class="checkmark"></span>
-          </label>
-        </div>
-      </div>
-    </form>
-    <div>
-      <div class="btn-group">
+    </div>
+  </form>
+  <div>
+    <div class="btn-group">
       <div class="mt-4 pt-4 me-3">
         <button class="btn btn-primary btn-lg" (click)="backButton()">
           Back
@@ -28,9 +27,7 @@
         <button class="btn btn-success btn-lg" (click)="next()">Next</button>
       </div>
     </div>
-    </div>
-  
-
+  </div>
 </div>
 <!-- <table class="table align-middle mb-0 bg-white">
   <thead class="bg-light">

@@ -23,7 +23,6 @@ export class CatalogService {
   }
 
   getCatalog(): Observable<Catalog[]> {
-    //get metodu Get Http istediğini hazırlıyor.
     return this.httpClient.get<Catalog[]>(this.controllerUrl);
   }
 
@@ -31,19 +30,5 @@ export class CatalogService {
     this.store.dispatch(setCatalogsModel( {catalogs}));
   }
 
-  // add(catalog: Catalog): Observable<Catalog> {
-  //   return this.httpClient.post<Catalog>(this.controllerUrl, catalog);
-  // }
-
-  // update(catalog: Catalog): Observable<Catalog> {
-  //   return this.httpClient.put<Catalog>(
-  //     `${this.controllerUrl}/${catalog.serviceId}`,
-  //     catalog
-  //   );
-  // }
-
-  // delete(id: number): Observable<void> {
-  //   return this.httpClient.delete<void>(`${this.controllerUrl}/${id}`);
-  // }
-
+ 
 }

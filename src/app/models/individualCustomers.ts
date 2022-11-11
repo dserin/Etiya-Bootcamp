@@ -3,4 +3,5 @@ export interface IndividualCustomers {
   firstName: string;
   lastName: string;
   nationalIdentity: number;
+  dateOfBirth: string;
 }

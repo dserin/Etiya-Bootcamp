@@ -1,5 +1,5 @@
 export interface Subscription {
-  id: number;
+  id?: number;
   customerId: number;
   serviceId: number;
   dateStarted: string;

@@ -35,7 +35,7 @@ export class CatalogListComponent implements OnInit {
     });
   }
 
-  onCheckboxChange(event?: any) {
+  onChange(event?: any) {
     //listelenen servisler içerisinde ilgili servislerin seçilip seçilmediği işleminin yapıldığı metot
 
     const selectedCatalogs = this.catalogForm.controls[
@@ -54,7 +54,7 @@ export class CatalogListComponent implements OnInit {
     }
   }
 
-  goNextForm() {
+  next() {
     const selectedcatalogs = this.catalogs.filter((catalog) => {
       //seçilen cataloglar, catalogs json içersinden filterelenip selectedcatalogs değişkenine atanıyor..
       return this.catalogForm.value.selectedCatalogs.some(
@@ -68,7 +68,7 @@ export class CatalogListComponent implements OnInit {
 
     this.saveCatalogsStore(this.checkedCatalogs);
 
-    this.router.navigateByUrl('/creation-overview');
+    this.router.navigateByUrl('/summary');
   }
 
   saveCatalogsStore(catalogs: Catalog) {
@@ -78,7 +78,7 @@ export class CatalogListComponent implements OnInit {
     });
   }
 
-  goBackForm() {
+  back() {
     this.router.navigateByUrl('/create-customer');
   }
 }

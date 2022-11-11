@@ -1,47 +1,48 @@
 <div class="container">
-  <div class="row">
-    <h1 class="mt-5">Select Catalogs</h1>
-    <form [formGroup]="catalogForm">
-      <div class="row">
-        <div class="col-lg-3 col-md-4" *ngFor="let catalog of catalogs">
-          <input
-            type="checkbox"
-            id="1"
-            value="1"
-            formArrayName="selectedCatalogs"
-            [value]="catalog.name"
-            (change)="onCheckboxChange($event)"
-          />
-          <div>
+  <div class="card">
+    <div class="card-body"></div>
+    <div class="row">
+      <h1 class="mt-5">Select Catalogs</h1>
+      <form [formGroup]="catalogForm">
+        <div class="row">
+          <div class="col-lg-3 col-md-4" *ngFor="let catalog of catalogs">
+            <input
+              type="checkbox"
+              id="1"
+              value="1"
+              formArrayName="selectedCatalogs"
+              [value]="catalog.name"
+              (change)="onChange($event)"
+            />
             <div>
-              {{ catalog.name }}
-            </div>
-            <div>
-              <h3>
-                Price:
-                {{ catalog.price }}₺
-              </h3>
+              <div>
+                {{ catalog.name }}
+              </div>
+              <div>
+                <h3>
+                  Price:
+                  {{ catalog.price }}₺
+                </h3>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <hr />
+        <div class="col-lg-12 col-md-6">
+          <div
+            class="buttons"
+            style="display: flex; justify-content: space-between"
+          >
+            <button class="btn btn-primary mb-5" (click)="back()">Back</button>
 
-      <div class="col-lg-12 col-md-6">
-        <div
-          class="buttons"
-          style="display: flex; justify-content: space-between"
-        >
-          <button class="btn btn-primary mb-5" (click)="goBackForm()">
-            Back
-          </button>
-
-          <div>
-            <button class="btn btn-primary mb-5" (click)="goNextForm()">
-              Next
-            </button>
+            <div>
+              <button class="btn btn-primary mb-5" (click)="next()">
+                Next
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

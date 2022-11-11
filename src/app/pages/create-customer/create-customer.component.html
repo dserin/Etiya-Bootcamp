@@ -1,83 +1,213 @@
 <div class="container">
-  <form [formGroup]="individualCustomerForm">
-    <label>Customer Type : </label>
-    <select
-      class="form-select"
-      id="customerType"
-      name="customerType"
-      #teams
-      (change)="selectedType(teams.value)"
-    >
-      <option value="">Select Type</option>
-      <option value="individual">Individual</option>
-      <option value="corporate">Corparate</option>
-    </select>
-    <div *ngIf="isIndividualCustomer">
-      <div class="mb-3">
-        <label for="firstName" class="form-label">First Name</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="firstName"
-          id="firstName"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="lastName" class="form-label">Last Name</label>
-        <input
-          type="text"
-          class="form-control"
-          formControlName="lastName"
-          id="lastName"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="nationalIdentity" class="form-label"
-          >National Identity</label
+  <div class="row justify-content-center align-items-center h-75">
+    <div class="card">
+      <div>
+        <h3 class="text-center mb-3 mt-3">Create Customer</h3>
+        <div
+          class="col-md-12 mb-4 d-flex justify-content-center"
+          *ngIf="!servicesForm"
         >
-        <input
-          type="text"
-          class="form-control"
-          formControlName="nationalIdentity"
-          id="nationalIdentity"
-        />
-      </div>
-      <button
-        routerLink="/catalog-list"
-        class="btn btn-success"
-        (click)="saveIndividualState()"
-      >
-        Save
-      </button>
-    </div>
-    <div class="container">
-      <form *ngIf="!isIndividualCustomer" [formGroup]="corporateCustomerForm">
-        <div class="mb-3">
-          <label for="companyName" class="form-label">Company Name</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="companyName"
-            id="companyName"
-          />
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="individualCustomer"
+              (click)="clickCustomerOption(true)"
+              [checked]="isIndividual"
+            />
+            <label class="form-check-label">Individual Customers </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="corporateCustomers"
+              value="corporateCustomers"
+              (click)="clickCustomerOption(false)"
+              [checked]="!isIndividual"
+            />
+            <label class="form-check-label">Corporate Customers </label>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="taxNumber" class="form-label">Tax Number</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="taxNumber"
-            id="taxNumber"
-          />
-        </div>
-        <button
-          routerLink="/catalog-list"
-          class="btn btn-warning"
-          (click)="saveCorporateState()"
+        <form
+          *ngIf="isIndividual && !servicesForm"
+          [formGroup]="createIndividualCustomer"
         >
-          Save
-        </button>
-      </form>
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <label class="form-label" for="nationalIdentity"
+                >National Identity</label
+              >
+              <div class="form-outline">
+                <input
+                  type="text"
+                  id="nationalIdentity"
+                  class="form-control form-control-lg"
+                  formControlName="nationalIdentity"
+                  maxlength="11"
+                />
+                <div
+                  *ngIf="
+                    createIndividualCustomer
+                      .get('nationalIdentity')
+                      ?.hasError('minlength') &&
+                    (createIndividualCustomer.dirty ||
+                      createIndividualCustomer.touched)
+                  "
+                  class="alert"
+                >
+                  National Identity minimum length must be 11 digits
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <label class="form-label" for="firstName">First Name</label>
+              <div class="form-outline">
+                <input
+                  type="text"
+                  id="firstName"
+                  class="form-control form-control-lg"
+                  formControlName="firstName"
+                />
+                <div
+                  *ngIf="
+                    createIndividualCustomer
+                      .get('firstName')
+                      ?.hasError('required') &&
+                    (createIndividualCustomer.dirty ||
+                      createIndividualCustomer.touched)
+                  "
+                  class="alert"
+                >
+                  First Name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <label class="form-label" for="lastName">Last Name</label>
+              <div class="form-outline">
+                <input
+                  type="text"
+                  id="lastName"
+                  class="form-control form-control-lg"
+                  formControlName="lastName"
+                />
+                <div
+                  *ngIf="
+                    createIndividualCustomer
+                      .get('lastName')
+                      ?.hasError('required') &&
+                    (createIndividualCustomer.dirty ||
+                      createIndividualCustomer.touched)
+                  "
+                  class="alert"
+                >
+                  Last Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <label class="form-label" for="dateOfBirth">Birthday</label>
+              <div class="form-outline">
+                <input
+                  type="date"
+                  id="dateOfBirth"
+                  class="form-control form-control-lg"
+                  formControlName="dateOfBirth"
+                />
+                <div
+                  *ngIf="
+                    createIndividualCustomer
+                      .get('dateOfBirth')
+                      ?.hasError('required') &&
+                    (createIndividualCustomer.dirty ||
+                      createIndividualCustomer.touched)
+                  "
+                  class="alert"
+                >
+                  Birthday is required
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form
+          *ngIf="!isIndividual && !servicesForm"
+          [formGroup]="createCorporateCustomer"
+        >
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <label class="form-label" for="companyName">Company Name</label>
+              <div class="form-outline">
+                <input
+                  type="text"
+                  id="companyName"
+                  class="form-control form-control-lg"
+                  formControlName="companyName"
+                />
+                <div
+                  *ngIf="
+                    createCorporateCustomer
+                      .get('companyName')
+                      ?.hasError('required') &&
+                    (createCorporateCustomer.dirty ||
+                      createCorporateCustomer.touched)
+                  "
+                  class="alert"
+                >
+                  Company Name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <label class="form-label" for="taxNumber">Tax Number</label>
+              <div class="form-outline">
+                <input
+                  type="text"
+                  id="taxNumber"
+                  class="form-control form-control-lg"
+                  formControlName="taxNumber"
+                  maxlength="8"
+                />
+                <div
+                  *ngIf="
+                    createCorporateCustomer
+                      .get('taxNumber')
+                      ?.hasError('required') &&
+                    (createCorporateCustomer.dirty ||
+                      createCorporateCustomer.touched)
+                  "
+                  class="alert"
+                >
+                  Tax Number is required
+                </div>
+
+                <div
+                  *ngIf="
+                    createCorporateCustomer
+                      .get('taxNumber')
+                      ?.hasError('minlength') &&
+                    (createCorporateCustomer.dirty ||
+                      createCorporateCustomer.touched)
+                  "
+                  class="alert"
+                >
+                  Tax Number must be 8 character
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="mt-4 pt-2" style="float: right">
+          <button class="btn btn-success btn-lg mb-4" (click)="goNextForm()">
+            Next
+          </button>
+        </div>
+      </div>
     </div>
-  </form>
+  </div>
 </div>

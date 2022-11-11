@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { NgModule } from '@angular/core';
 import { ServiceSelectionComponent } from './pages/service-selection/service-selection.component';
+import { SummaryComponent } from './pages/summary/summary.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'catalog-list',
     component: CatalogListComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'summary',
+    component: SummaryComponent,
     canActivate: [LoginGuard],
   },
 ];

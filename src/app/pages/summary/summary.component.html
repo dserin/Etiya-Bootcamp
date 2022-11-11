@@ -1,0 +1,95 @@
+<section class="vh-100">
+  <div class="container">
+    <div class="row justify-content-center align-items-center mt-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div></div>
+            <div>
+              <p>
+                Full Name:
+                {{ individualCustomer.firstName }}
+                {{ individualCustomer.lastName }}
+              </p>
+              <p>
+                National Idenditity:
+                {{ individualCustomer.nationalIdentity }}
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <p class="mb-0">
+                Birthday:
+                {{ individualCustomer.dateOfBirth | date: "dd.MM.YYYY" }}
+              </p>
+            </div>
+            <div class="col-sm-9"></div>
+          </div>
+          <hr />
+          <div class="row" *ngFor="let catalog of checkedCatalogs">
+            <p>
+              Catalogs:
+              {{ catalog.name }}
+            </p>
+
+            <div class="col-sm-9">
+              <p class="text-muted mb-0"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-success btn-lg" (click)="saveCustomer()">
+        Save
+      </button>
+    </div>
+  </div>
+
+  <form *ngIf="!isIndividual && corporateCustomer">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm">
+                <p class="mb-0">Company Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                  {{ corporateCustomer.companyName }}
+                </p>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm">
+                <p class="mb-0">Tax Number</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                  {{ corporateCustomer.taxNumber }}
+                </p>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm">
+                <p class="mb-0">Catalogs</p>
+              </div>
+              <div class="col-sm-9">
+                <p
+                  class="text-muted mb-0"
+                  *ngFor="let catalog of checkedCatalogs"
+                >
+                  {{ catalog.name }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
