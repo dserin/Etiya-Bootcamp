@@ -54,14 +54,13 @@ export class ServiceSelectionComponent implements OnInit {
 
   next() {
     const selectservices = this.services.filter((service) => {
-      //seçilen servisler, services json içersinden filterelenip selectservices değişkenine atanıyor..
       return this.servicesForm.value.selectServices.some(
         (selectService: any) => {
           return selectService === service.name;
         }
       );
     });
-    this.servicesControl = selectservices; // ilgili değişkeni globale taşır...
+    this.servicesControl = selectservices;
     this.saveStore(this.servicesControl);
     this.router.navigateByUrl('/summary');
   }
@@ -70,32 +69,6 @@ export class ServiceSelectionComponent implements OnInit {
     this.servicesService.saveServices(serviceInfoModel);
     this.servicesService.serviceModel$;
   }
-
-  // add(item: any) {
-  //   this.services.forEach((element, index) => {
-  //     if (element.id == item.id) {
-  //       this.services.splice(index, 1);
-  //       this.selectedServices.push(item);
-  //     }
-  //   });
-  // }
-  // remove(item: any) {
-  //   this.selectedServices.forEach((element, index) => {
-  //     if (element.id == item.id) {
-  //       this.selectedServices.splice(index, 1);
-  //       this.services.push(item);
-  //     }
-  //   });
-  // }
-
-  // next() {
-  //   if (this.selectedServices.length) {
-  //     console.log('store a data yolla');
-  //     this.router.navigate(['/summary']);
-  //   } else {
-  //     this.toastr.error('Gerekli alanları doldurun');
-  //   }
-  // }
 
   backButton() {
     this.router.navigate(['/create-customer']);

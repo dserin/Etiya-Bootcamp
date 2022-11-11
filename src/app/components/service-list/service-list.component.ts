@@ -15,18 +15,13 @@ import { ServicesService } from 'src/app/services/services.service';
   styleUrls: ['./service-list.component.css'],
 })
 export class ServiceListComponent implements OnInit {
-  // component içerisinde yer alan properties bizim için state oluyor.
-  // ?: null olabilir demek.
-  // !: null olmayacak, bu property'i kullanmadan önce atama işlemini gerçekleştiriceğiz söz vermiş oluyoruz.
   services!: Service[];
   serviceAddForm!: FormGroup;
   isUpdating: boolean = false;
   error: string = '';
   searchText: string = '';
-  serviceId: number = 0; // state
+  serviceId: number = 0;
   private findService?: Service;
-  //Angular IoC (Inversion of Control) Container kullanır.
-  //Dependency Injection (Bağımlılık Enjeksiyonu)
   constructor(
     private formBuilder: FormBuilder,
     private servicesService: ServicesService

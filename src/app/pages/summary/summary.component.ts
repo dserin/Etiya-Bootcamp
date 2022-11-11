@@ -61,15 +61,12 @@ export class SummaryComponent implements OnInit {
   }
 
   saveCustomer() {
-    // son stepde save butonu ile gerçekleştirilecek işlemler...
     const newCustomer: Customer = {
       customerNumber: Math.floor(10000000 + Math.random() * 90000000),
     };
     this.customerService.createCustomer(newCustomer).subscribe({
-      //customer json'a post edildi..
       next: (res) => {
         if (this.isIndividual) {
-          //individiual customer seçilmiş ise...
           const addToIndividual = {
             id: res.id,
             customerId: res.id,
@@ -80,15 +77,12 @@ export class SummaryComponent implements OnInit {
           this.individualCustomerService
             .createCustomer(addToIndividual)
             .subscribe({
-              //individualCustomer json'a post edildi..
               next: (res) => {
-                this.addInvoice(res); //seçilen servislerin,subscription'ların ve invoice'lerin eklenme işlemlerinin yapıldığı metot...
+                this.addInvoice(res);
               },
             });
         } else {
-          //corporate customer seçilmiş ise...
           const addToCorporate = {
-            //post edilecek değerler objeye atanıyor..
             id: res.id,
             customerId: res.id,
             ...this.corporateCustomer,

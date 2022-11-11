@@ -17,17 +17,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!-- <li class="nav-item">
-            <a
-              class="nav-link"
-              routerLink="/create-customer"
-              routerLinkActive="active"
-              >Create Customer</a
-            >
-          </li> -->
           <li class="nav-item">
             <a
-            *ngIf="isLogin"
+              *ngIf="isLogin"
               style="color: white"
               class="nav-link"
               routerLink="/customers"
@@ -49,7 +41,7 @@
           <span style="color: white" class="me-3">{{
             (tokenUserModel$ | async)!.userName
           }}</span>
-          <a style="color:white " (click)="logout()">Logout</a>
+          <a style="color: white" (click)="logout()">Logout</a>
         </div>
       </div>
     </div>
