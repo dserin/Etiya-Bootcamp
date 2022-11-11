@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CatalogService } from 'src/app/services/catalog.service';
-import { CorporateCustomers } from 'src/app/models/corporateCustomers';
 import { CorporateCustomersService } from 'src/app/services/corporate-customers.service';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -10,8 +9,6 @@ import { IndividualCustomersService } from 'src/app/services/individual-customer
 import { Invoice } from 'src/app/models/invoice';
 import { InvoicesService } from 'src/app/services/invoices.service';
 import { Router } from '@angular/router';
-import { Service } from 'src/app/models/service';
-import { ServicesService } from 'src/app/services/services.service';
 import { Subscription } from 'src/app/models/subscription';
 import { SubscriptionsService } from 'src/app/services/subscriptions.service';
 import { ToastrService } from 'ngx-toastr';
@@ -42,10 +39,10 @@ export class SummaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fetchDataFromStore();
+    this.storeData();
   }
 
-  fetchDataFromStore() {
+  storeData() {
     this.individualCustomerService.individualInfoModel$.subscribe((res) => {
       if (res) {
         this.individualCustomer = res;
@@ -85,7 +82,7 @@ export class SummaryComponent implements OnInit {
             .subscribe({
               //individualCustomer json'a post edildi..
               next: (res) => {
-                this.addServiceSubscriptionAndInvoice(res); //seçilen servislerin,subscription'ların ve invoice'lerin eklenme işlemlerinin yapıldığı metot...
+                this.addInvoice(res); //seçilen servislerin,subscription'ların ve invoice'lerin eklenme işlemlerinin yapıldığı metot...
               },
             });
         } else {
@@ -102,7 +99,7 @@ export class SummaryComponent implements OnInit {
             .createCustomer(addToCorporate)
             .subscribe({
               next: (res) => {
-                this.addServiceSubscriptionAndInvoice(res); //seçilen servislerin,subscription'ların ve invoice'lerin eklenme işlemlerinin yapıldığı metot...
+                this.addInvoice(res); //seçilen servislerin,subscription'ların ve invoice'lerin eklenme işlemlerinin yapıldığı metot...
               },
             });
         }
@@ -112,7 +109,7 @@ export class SummaryComponent implements OnInit {
     });
   }
 
-  addServiceSubscriptionAndInvoice(customer: any) {
+  addInvoice(customer: any) {
     this.checkedCatalogs.map((catalog: any) => {
       //seçilen servisler
       const subscription: Subscription = {

@@ -4,15 +4,17 @@ import { Invoice } from '../models/invoice';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InvoicesService {
   private controllerUrl = `${environment.apiUrl}/invoices`;
 
   constructor(private httpClient: HttpClient) {}
 
-  getInvoices(id:number|null){
-    return this.httpClient.get<Invoice[]>(`${this.controllerUrl}?subscriptionId=${id}`);
+  getInvoices(id: number | null) {
+    return this.httpClient.get<Invoice[]>(
+      `${this.controllerUrl}?subscriptionId=${id}`
+    );
   }
 
   postInvoices(invoice: Invoice) {
