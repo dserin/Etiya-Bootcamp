@@ -1,0 +1,85 @@
+<div class="container">
+    <form [formGroup]="servicesForm">
+      <div class="card" style="width: 16rem;">
+      </div>
+      <div class="row">
+        <div class="col-lg-25" *ngFor="let service of services">
+          <label class="services"
+            >{{ service.name }}
+            <input
+              type="checkbox"
+              formArrayName="selectServices"
+              [value]="service.name"
+              (change)="controlService($event)"
+            />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </form>
+    <div>
+      <div class="btn-group">
+      <div class="mt-4 pt-4 me-3">
+        <button class="btn btn-primary btn-lg" (click)="backButton()">
+          Back
+        </button>
+      </div>
+      <div class="mt-4 pt-4">
+        <button class="btn btn-success btn-lg" (click)="next()">Next</button>
+      </div>
+    </div>
+    </div>
+  
+
+</div>
+<!-- <table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Add</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of services; let i = index">
+      <td>
+        <div class="d-flex align-items-center">
+          <div class="ms-1">
+            <td>
+              <p type="text">{{ item.id }}</p>
+            </td>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p type="text">{{ item.name }}</p>
+      </td>
+      <td><button (click)="add(item)">Add</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let selectedItem of selectedServices; let i = index">
+      <td>
+        <p type="text">{{ selectedItem.id }}</p>
+      </td>
+      <td>
+        <p type="text">{{ selectedItem.name }}</p>
+      </td>
+      <td><button (click)="remove(selectedItem)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-primary" (click)="backButton()">Back</button>
+<button class="btn btn-primary" routerLink="/summary" (click)="next()">
+  Next
+</button> -->

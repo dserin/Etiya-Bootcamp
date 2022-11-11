@@ -1,0 +1,82 @@
+<div class="container">
+  <form [formGroup]="individualCustomerForm">
+    <label>Customer Type : </label>
+    <select class="form-select"
+      id="customerType"
+      name="customerType"
+      #teams
+      (change)="selectedType(teams.value)"
+    >
+      <option value="">Select Type</option>
+      <option value="individual">Individual</option>
+      <option value="corporate">Corparate</option>
+    </select>
+    <div *ngIf="isIndividualCustomer">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="firstName"
+          id="firstName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="lastName"
+          id="lastName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="nationalIdentity" class="form-label"
+          >National Identity</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          formControlName="nationalIdentity"
+          id="nationalIdentity"
+        />
+      </div>
+      <button
+        routerLink="/service-selection"
+        class="btn btn-success"
+        (click)="saveIndividualState()"
+      >
+      Save
+      </button>
+    </div>
+    <div class="container">
+      <form *ngIf="!isIndividualCustomer" [formGroup]="corporateCustomerForm">
+        <div class="mb-3">
+          <label for="companyName" class="form-label">Company Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="companyName"
+            id="companyName"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="taxNumber" class="form-label">Tax Number</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="taxNumber"
+            id="taxNumber"
+          />
+        </div>
+        <button
+          routerLink="/service-selection"
+          class="btn btn-warning"
+          (click)="saveCorporateState()"
+        >
+          Save
+        </button>
+      </form>
+    </div>
+  </form>
+</div>

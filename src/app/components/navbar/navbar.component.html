@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container d-flex justify-content-between">
+    <div>
+      <a routerLink="/homepage" class="navbar-brand text-white">Telco</a>
+    </div>
+    <div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/create-customer"
+              routerLinkActive="active"
+              >Create Customer</a
+            >
+          </li> -->
+          <li class="nav-item">
+            <a
+            *ngIf="isLogin"
+              style="color: white"
+              class="nav-link"
+              routerLink="/customers"
+              routerLinkActive="active"
+              >Customers</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              *ngIf="!isLogin"
+              class="nav-link"
+              routerLink="/login"
+              routerLinkActive="active"
+              >Login</a
+            >
+          </li>
+        </ul>
+        <div *ngIf="isLogin" class="d-flex align-items-center">
+          <span style="color: white" class="me-3">{{
+            (tokenUserModel$ | async)!.userName
+          }}</span>
+          <a style="color:white " (click)="logout()">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
