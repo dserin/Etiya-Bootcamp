@@ -1,7 +1,8 @@
 <div class="container">
   <form [formGroup]="individualCustomerForm">
     <label>Customer Type : </label>
-    <select class="form-select"
+    <select
+      class="form-select"
       id="customerType"
       name="customerType"
       #teams
@@ -42,11 +43,11 @@
         />
       </div>
       <button
-        routerLink="/service-selection"
+        routerLink="/catalog-list"
         class="btn btn-success"
         (click)="saveIndividualState()"
       >
-      Save
+        Save
       </button>
     </div>
     <div class="container">
@@ -70,7 +71,7 @@
           />
         </div>
         <button
-          routerLink="/service-selection"
+          routerLink="/catalog-list"
           class="btn btn-warning"
           (click)="saveCorporateState()"
         >
