@@ -14,8 +14,10 @@ import { Router } from '@angular/router';
 export class CustomersComponent implements OnInit {
   individualCus!: IndividualCustomers[];
   corporateCus!: CorporateCustomers[];
-  // searchName: string = '';
-  // searchSurName: string = '';
+  selectedCustomer: boolean = true;
+  searchName: string = '';
+  searchSurName: string = '';
+
   constructor(
     private router: Router,
     private individualCustomers: IndividualCustomersService,
@@ -28,24 +30,16 @@ export class CustomersComponent implements OnInit {
   }
 
   getIndividualCustomers() {
-    this.individualCustomers.getAllCustomers().subscribe({
-      next: (response) => {
-        this.individualCus = response;
-      },
-      error: (err) => {
-        console.log(err);
-      },
+    this.individualCustomers.getAllCustomers().subscribe((res) => {
+      this.individualCus = res;
     });
+    this.selectedCustomer = true;
   }
   getCorporateCustomers() {
-    this.corporateCustomers.getAllCustomers().subscribe({
-      next: (response) => {
-        this.corporateCus = response;
-      },
-      error: (err) => {
-        console.log(err);
-      },
+    this.corporateCustomers.getAllCustomers().subscribe((res) => {
+      this.corporateCus = res;
     });
+    this.selectedCustomer = false;
   }
 
   goDetail(item: any) {

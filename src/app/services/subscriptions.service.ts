@@ -12,8 +12,10 @@ export class SubscriptionsService {
   private sub: Subscription[] = [];
   constructor(private httpClient: HttpClient) {}
 
-  getSubscription(id: number) {
-    return this.httpClient.get<Subscription>(`${this.controllerUrl}/${id}`);
+  getSubscription(id: number | null) {
+    return this.httpClient.get<Subscription>(
+      `${this.controllerUrl}/?customerId=${id}`
+    );
   }
 
   getToSubscriptions(customerId: number): Observable<Subscription[]> {

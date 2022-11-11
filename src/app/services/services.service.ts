@@ -11,6 +11,9 @@ import { setServiceInfoModel } from '../store/customer/customer.actions';
   providedIn: 'root',
 })
 export class ServicesService {
+  getServices() {
+    throw new Error('Method not implemented.');
+  }
   private controllerUrl = `${environment.apiUrl}/services`;
   serviceModel$: Observable<Service | null>;
 

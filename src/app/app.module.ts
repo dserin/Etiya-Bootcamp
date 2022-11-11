@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { CreateCustomerComponent } from './pages/create-customer/create-customer.component';
 import { CustomerDetailComponent } from './pages/customer-detail/customer-detail.component';
 import { CustomersComponent } from './pages/customers/customers.component';
-import { FooterComponent } from './pages/footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './pages/login/login.component';
@@ -25,6 +25,8 @@ import { StoreModule } from '@ngrx/store';
 import { SummaryComponent } from './pages/summary/summary.component';
 import { ToastrModule } from 'ngx-toastr';
 import { appReducers } from './store/app.reducer';
+import { IndividualFilterPipe } from './pipes/individual-filter.pipe';
+import { CorporateFilterPipe } from './pipes/corporate-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { appReducers } from './store/app.reducer';
     ServiceSelectionComponent,
     CatalogListComponent,
     SummaryComponent,
+    IndividualFilterPipe,
+    CorporateFilterPipe,
   ],
   imports: [
     CommonModule,

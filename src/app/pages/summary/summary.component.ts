@@ -125,7 +125,7 @@ export class SummaryComponent implements OnInit {
         next: (response) => {
           //invoice post için ilgili datalar...
           let date = new Date(response.dateStarted);
-          date.setDate(date.getDate() + 28);
+          date.setDate(date.getDate());
           let dateDue = date.toISOString().split('T')[0];
           let invoice: Invoice = {
             subscriptionId: response.id,
@@ -135,10 +135,10 @@ export class SummaryComponent implements OnInit {
           this.invoiceService.postInvoices(invoice).subscribe(); //invoice post işlemi...
         },
         error: () => {
-          //hata varsa...
+          this.toastr.error('Error');
         },
         complete: () => {
-          //başarıyla tamamlandıysa...
+          this.toastr.success('Succesful');
           this.router.navigateByUrl('/customers');
         },
       });

@@ -1,72 +1,76 @@
 <div class="container">
-<div class="customers-list">
-  <h2>Customers List</h2> 
-</div>
+  <div class="customers-list">
+    <h2 class="text-center">Customers List</h2>
+  </div>
 
-<div>
-  <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-  <h4 class="text">Individual Customer</h4>
-  <button type="button" class="btn btn-primary" routerLink="/create-customer">
-    Add New Customer
-  </button>
-</div>
-  <div class="row">
+  <div>
     <div
-      *ngFor="let customer of individualCus"
-      class="card"
-      style="width: 16rem ; margin-right: 5px;"
+      style="display: flex; justify-content: space-between; margin-bottom: 50px"
     >
-      <img
-        class="card-img-top"
-        src="assets/images/userAvatar.jpg"
-        alt="Card image cap"
-      />
-      <div class="card-body col-xs-12 col-sm-6 col-md-4">
-        <div>
-        <h5 class="card-title" style="width: 16rem">
-          {{ customer.firstName }} {{ customer.lastName }}
+      <h4 class="text">Individual Customer</h4>
+      <button
+        type="button"
+        class="btn btn-primary"
+        routerLink="/create-customer"
+      >
+        Add New Customer
+      </button>
+    </div>
+    <div class="row">
+      <div
+        *ngFor="let customer of individualCus"
+        class="card"
+        style="width: 16rem; margin-right: 5px; margin-bottom: 10px"
+      >
+        <img
+          class="card-img-top"
+          src="assets/images/userAvatar.jpg"
+          alt="Card image cap"
+        />
+        <div class="card-body col-xs-12 col-sm-6 col-md-8">
+          <div>
+            <h5 class="card-title" style="width: 16rem">
+              {{ customer.firstName }} {{ customer.lastName }}
+            </h5>
+          </div>
 
-        </h5>
-      </div>
-        <!-- <p>{{ customer.firstName }}</p> -->
-        <div>
-        <button (click)="goDetail(customer)" class="btn btn-primary">
-          Detail
-        </button>
-      </div>
+          <div>
+            <button (click)="goDetail(customer)" class="btn btn-primary">
+              Detail
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div>
-  <h4 class="text my-5">Corporate Customer</h4>
-  <div class="row">
-    <div
-      *ngFor="let customerCor of corporateCus"
-      class="card"
-      style="width: 16rem ;margin-right: 5px"
-    >
-      <img
-        class="card-img-top"
-        src="assets/images/companyIcon.jpg"
-        alt="Card image cap"
-      />
-      <div class="card-body col-xs-12 col-sm-6 col-md-4">
-        <h5 class="card-title" style="width: 16rem ">
+  <div>
+    <h4 class="text my-5">Corporate Customer</h4>
+    <div class="row">
+      <div
+        *ngFor="let customerCor of corporateCus"
+        class="card"
+        style="width: 16rem; margin-right: 5px"
+      >
+        <img
+          class="card-img-top"
+          src="assets/images/companyIcon.jpg"
+          alt="Card image cap"
+        />
+        <div class="card-body col-xs-12 col-sm-6 col-md-4">
+          <h5 class="card-title" style="width: 16rem">
+            <br />
+            {{ customerCor.companyName }}
+          </h5>
+          <!-- <p>{{ customer.firstName }}</p> -->
+
           <br />
-          {{ customerCor.companyName }}
-        </h5>
-        <!-- <p>{{ customer.firstName }}</p> -->
-
-        <br />
-        <button (click)="goDetail(customerCor)" class="btn btn-primary">
-          Detail
-        </button>
+          <button (click)="goDetail(customerCor)" class="btn btn-primary">
+            Detail
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </div>
 
 <!-- <div class="input-group">
