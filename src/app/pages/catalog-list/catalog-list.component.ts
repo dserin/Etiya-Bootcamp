@@ -36,17 +36,13 @@ export class CatalogListComponent implements OnInit {
   }
 
   onChange(event?: any) {
-    //listelenen servisler içerisinde ilgili servislerin seçilip seçilmediği işleminin yapıldığı metot
-
     const selectedCatalogs = this.catalogForm.controls[
       'selectedCatalogs'
     ] as FormArray;
 
     if (event.target.checked) {
-      //seçili service arraye push edilir..
       selectedCatalogs.push(new FormControl(event.target.value));
     } else {
-      // seçili service çıkarılırsa arraydan silinir...
       const index = selectedCatalogs.controls.findIndex(
         (x) => x.value === event.target.value
       );
@@ -56,7 +52,6 @@ export class CatalogListComponent implements OnInit {
 
   next() {
     const selectedcatalogs = this.catalogs.filter((catalog) => {
-      //seçilen cataloglar, catalogs json içersinden filterelenip selectedcatalogs değişkenine atanıyor..
       return this.catalogForm.value.selectedCatalogs.some(
         (selectedCatalog: any) => {
           return selectedCatalog === catalog.name;
@@ -64,7 +59,7 @@ export class CatalogListComponent implements OnInit {
       );
     });
     console.log(selectedcatalogs);
-    this.checkedCatalogs = selectedcatalogs; // ilgili değişkeni globale taşır...
+    this.checkedCatalogs = selectedcatalogs;
 
     this.saveCatalogsStore(this.checkedCatalogs);
 

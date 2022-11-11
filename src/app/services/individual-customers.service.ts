@@ -20,7 +20,7 @@ export class IndividualCustomersService {
     private store: Store<AppStoreState>
   ) {
     this.individualInfoModel$ = this.store.select(
-      //Store'dan individualCustomerModel'ı alıyoruz
+     
       (state) => state.customer.individualInfo
     );
   }
