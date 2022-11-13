@@ -93,7 +93,7 @@ export class SummaryComponent implements OnInit {
             .createCustomer(addToCorporate)
             .subscribe({
               next: (res) => {
-                this.addInvoice(res); //seçilen servislerin,subscription'ların ve invoice'lerin eklenme işlemlerinin yapıldığı metot...
+                this.addInvoice(res);
               },
             });
         }
@@ -114,7 +114,6 @@ export class SummaryComponent implements OnInit {
       this.subscriptionService.postSubscription(subscription).subscribe({
         //service post işlemi
         next: (response) => {
-          //invoice post için ilgili datalar...
           let date = new Date(response.dateStarted);
           date.setDate(date.getDate());
           let dateDue = date.toISOString().split('T')[0];
@@ -123,7 +122,7 @@ export class SummaryComponent implements OnInit {
             dateCreated: response.dateStarted,
             dateDue: dateDue,
           };
-          this.invoiceService.postInvoices(invoice).subscribe(); //invoice post işlemi...
+          this.invoiceService.postInvoices(invoice).subscribe();
         },
         error: () => {
           this.toastr.error('Error');

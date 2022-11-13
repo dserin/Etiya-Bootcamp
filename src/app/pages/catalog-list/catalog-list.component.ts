@@ -69,7 +69,7 @@ export class CatalogListComponent implements OnInit {
   saveCatalogsStore(catalogs: Catalog) {
     this.catalogService.saveCatalogs(catalogs);
     this.catalogService.catalogModel$.subscribe((res) => {
-      console.log('services :', res); //store'dan alınan serviceModel
+      console.log('services :', res);
     });
   }
 

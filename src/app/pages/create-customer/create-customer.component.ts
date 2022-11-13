@@ -68,7 +68,6 @@ export class CreateCustomerComponent implements OnInit {
       ],
     });
   }
-
   createCorporateCustomerForm() {
     this.createCorporateCustomer = this.formBuilder.group({
       companyName: [

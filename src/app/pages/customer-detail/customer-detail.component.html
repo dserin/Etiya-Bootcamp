@@ -1,76 +1,38 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-8">
-      <div>Customer Id :{{ subscription[0].customerId }}</div>
-      <div>Id:{{ subscription[0].id }}</div>
-      <div>ServiceId:{{ subscription[0].serviceId }}</div>
-      <div>Service Name:{{ service[0].name }}</div>
-      <div>Date Started: {{ subscription[0].dateStarted }}</div>
-      <button class="btn btn-success">Yeni Sipariş Başlat</button>
-    </div>
-  </div>
-</div> -->
 <div class="container">
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <div class="container" *ngFor="let item of individual">
-        <h5>{{ item.firstName }} {{ item.lastName }}</h5>
-      </div>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"> </th>
-      <td><div>Customer Id :</div></td>
-      <td>{{ subscription[0].customerId }}</td>
-      
-    </tr>
-    <tr>
-      <th scope="row"> </th>
-      <td><div>Id:</div></td>
-      <td>{{ subscription[0].id }}</td>
-      
-    </tr>
-    <tr>
-      <th scope="row"> </th>
-      <td><div>ServiceId:</div> </td>
-      <td>{{ subscription[0].serviceId }}</td>
-    </tr>
-    <tr>
-      <th scope="row"> </th>
-      <td><div>Service Name:</div></td>
-      <td>{{ service[0].name }}</td>
-    </tr>
-    <tr>
-      <th scope="row"> </th>
-      <td><div>Date Started: </div></td>
-      <td>{{ subscription[0].dateStarted }}</td>
-    </tr>
-    
-  </tbody>
-  
-</table>
-
-
-</div>
-
-  
-
-<!-- <div style="display: flex; width: 18rem" class="container">
   <table class="table table-hover">
-
-  <div class="card" style="display: flex; width: 18rem">
-    <div *ngFor="let item of individual">
-      <h5>{{ item.firstName }} {{ item.lastName }}</h5>
-    </div>
-
-    <div>Customer Id :{{ subscription[0].customerId }}</div>
-    <div>Id:{{ subscription[0].id }}</div>
-    <div>ServiceId:{{ subscription[0].serviceId }}</div>
-    <div>Service Name:{{ service[0].name }}</div>
-    <div>Date Started: {{ subscription[0].dateStarted }}</div>
-    <a routerLink="#" class="btn btn-primary">Yeni Sipariş Başlat</a>
-  </div>
-</div> -->
-
+    <thead>
+      <tr>
+        <div class="container" *ngFor="let item of individual">
+          <h5>{{ item.firstName }} {{ item.lastName }}</h5>
+        </div>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+        <td><div>Customer Id :</div></td>
+        <td>{{ subscription[0].customerId }}</td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td><div>Id:</div></td>
+        <td>{{ subscription[0].id }}</td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td><div>ServiceId:</div></td>
+        <td>{{ subscription[0].serviceId }}</td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td><div>Service Name:</div></td>
+        <td>{{ service[0].name }}</td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td><div>Date Started:</div></td>
+        <td>{{ subscription[0].dateStarted }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

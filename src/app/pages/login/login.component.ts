@@ -37,16 +37,11 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.loginForm.value).subscribe({
-      next: (response) => {
-        //* next: event sonucunda, ara katmanda değeri işlemek istiyorsak, kullanılan event metodudur.
-        this.authService.saveToken(response); //= token'ı localStorage'a kaydettik ve store'a da kaydettik.
-      },
+      next: (response) => {},
       error: (errorResponse) => {
-        //* error: bir hata olduğunda yakaladığımız event metodudur.
         this.toastr.error(errorResponse.error.message);
       },
       complete: () => {
-        //* next'ten sonra son kısımda çalışan event metodudur. Event'in artık comlete olduğu gösteriyor.
         this.router.navigateByUrl('/homepage');
         this.authService.emitOnLoginEvent(
           `Hoşgeldiniz, ${this.loginForm.value.userName}`

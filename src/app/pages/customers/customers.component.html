@@ -2,7 +2,6 @@
   <div class="customers-list">
     <h2 class="text-center">Customers List</h2>
   </div>
-
   <div>
     <div
       style="display: flex; justify-content: space-between; margin-bottom: 20px"
@@ -72,60 +71,3 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text bg-danger" id="">First and Last Name</span>
-  </div>
-  <input id="name" [(ngModel)]="searchName" class="form-control" type="text" />
-  <input
-    id="surname"
-    [(ngModel)]="searchSurName"
-    class="form-control"
-    type="text"
-  /> -->
-<!-- </div> -->
-
-<!-- <div
-  class="customers-list-item"
-  *ngFor="let customer of customers | filterCustomer: searchName:searchSurName"
->
-  <p>{{ customer.firstName }}</p>
-  <p>{{ customer.lastName }}</p>
-  <div class="customer-buttons">
-    <button class="btn btn-outline-danger" (click)="goDetail(customer)">
-      Detail
-    </button>
-  </div>
-</div> -->
-
-<!-- <div
-  class="card-body"
-  style="display: flex; justify-content: space-between"
-  *ngFor="let customer of individualCus"
->
-  <p>{{ customer.firstName }}</p>
-  <p>{{ customer.lastName }}</p>
-  <div class="card-body">
-    <button class="btn btn-outline-primary" (click)="goDetail(customer)">
-      Detail
-    </button>
-  </div>
-</div>
-<br />
-<div
-  class="card-body"
-  style="display: flex; justify-content: space-between"
-  *ngFor="let customers of corporateCus"
->
-  <p>{{ customers.companyName }}</p>
-  <div class="card-body">
-    <button class="btn btn-outline-primary" (click)="goDetail(customers)">
-      Detail
-    </button>
-  </div>
-</div>
-
-<button type="button" class="btn btn-primary" routerLink="/create-customer">
-  Add New Customer
-</button> -->

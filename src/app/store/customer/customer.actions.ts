@@ -20,8 +20,6 @@ export const setServiceInfoModel = createAction(
   props<{ serviceInfoModel: Service }>()
 );
 export const setCatalogsModel = createAction(
-  '[Customer] Set Catalogs For Selected Customer', //* Benzersiz key verdik. Bu action type/id olucak.
-  props<{ catalogs: Catalog }>() //* inline bir interface yazdık.
-  //* Bu interface'in içindeki property'ler, action'ın içindeki property'ler/payload olucak.
+  '[Customer] Set Catalogs For Selected Customer',
+  props<{ catalogs: Catalog }>()
 );
-
